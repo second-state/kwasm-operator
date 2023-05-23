@@ -74,7 +74,7 @@ var _ = Describe("ProvisionerController", func() {
 
 			// Check that the job was created.
 			job = &batchv1.Job{}
-			err = k8sClient.Get(ctx, types.NamespacedName{Name: nodeName + "-provision-kwasm", Namespace: namespaceName}, job)
+			err = k8sClient.Get(ctx, types.NamespacedName{Name: nodeName + "-pk", Namespace: namespaceName}, job)
 			Expect(err).NotTo(HaveOccurred())
 			Expect(job).NotTo(BeNil())
 
@@ -109,7 +109,7 @@ var _ = Describe("ProvisionerController", func() {
 
 			// Check that the job was created.
 			job = &batchv1.Job{}
-			err = k8sClient.Get(ctx, types.NamespacedName{Name: nodeName + "-provision-kwasm", Namespace: namespaceName}, job)
+			err = k8sClient.Get(ctx, types.NamespacedName{Name: nodeName + "-pk", Namespace: namespaceName}, job)
 			Expect(err).To(HaveOccurred())
 
 		})
@@ -135,7 +135,7 @@ var _ = Describe("ProvisionerController", func() {
 			})
 			// Check that the job was created.
 			job = &batchv1.Job{}
-			err = k8sClient.Get(ctx, types.NamespacedName{Name: nodeName + "-provision-kwasm", Namespace: namespaceName}, job)
+			err = k8sClient.Get(ctx, types.NamespacedName{Name: nodeName + "-pk", Namespace: namespaceName}, job)
 			Expect(err).NotTo(HaveOccurred())
 		})
 	})

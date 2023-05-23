@@ -109,7 +109,7 @@ func (r *ProvisionerReconciler) Reconcile(ctx context.Context, req ctrl.Request)
 
 		err := r.Delete(ctx, &batchv1.Job{
 			ObjectMeta: metav1.ObjectMeta{
-				Name:      req.Name + "-provision-kwasm",
+				Name:      req.Name + "-pk",
 				Namespace: os.Getenv("CONTROLLER_NAMESPACE"),
 			},
 		}, client.PropagationPolicy(metav1.DeletePropagationBackground))
@@ -142,7 +142,7 @@ func (r *ProvisionerReconciler) deployJob(n *corev1.Node, req ctrl.Request) *bat
 
 	dep := &batchv1.Job{
 		ObjectMeta: metav1.ObjectMeta{
-			Name:      req.Name + "-provision-kwasm",
+			Name:      req.Name + "-pk",
 			Namespace: os.Getenv("CONTROLLER_NAMESPACE"),
 			Labels:    map[string]string{"kwasm.sh/job": "true"},
 		},
